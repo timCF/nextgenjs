@@ -1,9 +1,5 @@
-document.addEventListener "DOMContentLoaded", (e) ->
-	state = {}
-	react = require("react-dom")
-	widget = require("widget")
-	setInterval((() -> react.render(widget(state), document.getElementById("main_frame"))), 500)
-	main(state)
-main = (state) ->
+module.exports = (state, utils) ->
 	state.stack = []
-	setInterval((() -> state.stack.push(Date())), 500)
+	state.data = {}
+	state.data.enabled = false
+	setInterval((() -> if state.data.enabled then state.stack.push(Date())), 500)

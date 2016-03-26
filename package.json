@@ -12,11 +12,13 @@
     "build": "brunch build --production"
   },
   "dependencies": {
+    "css-brunch": "^2.0.0",
     "envify": "^1.2.1",
     "iced-coffee-script-brunch": "^1.7.0",
     "jade": "^1.11.0",
     "jade-brunch": "^2.0.0",
     "jade-react-brunch": "git://github.com/timCF/jade-react-brunch",
+    "less-brunch": "^2.0.0",
     "react": "^0.14.7",
     "react-dom": "^0.14.7",
     "sass-brunch": "^2.0.0",
