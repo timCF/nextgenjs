@@ -1,4 +1,4 @@
-mixin swap(name, path)
+mixin swapbutton(name, path)
 	if locals.state.data && locals.state.data.enabled
 		button.btn.btn-success.navbar-btn(onClick=locals.utils.view_swap(locals.state, path))= name
 	else
@@ -10,7 +10,7 @@ nav.navbar.navbar-default.navbar-fixed-top.transparent.text-center
 		button.btn.btn-warning.navbar-btn(onClick=locals.utils.warn("hello nextgenjs")) warn
 		button.btn.btn-danger.navbar-btn(onClick=locals.utils.error("hello nextgenjs")) error
 	button.btn.btn-default.navbar-btn(onClick=download("hello\r\nnextgen", Date()+".txt", "text/plain")) download
-	+swap("enabled", ["data","enabled"])
+	+swapbutton("enabled", ["data","enabled"])
 if locals.state.stack
 	each el in locals.state.stack
 		div= el
