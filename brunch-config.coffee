@@ -1,5 +1,4 @@
 module.exports =
-	sourceMaps: false
 	files:
 		javascripts:
 			joinTo: 'app.js'
