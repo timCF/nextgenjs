@@ -1,5 +1,5 @@
 {
-  "name": "brunch-app",
+  "name": "nextgenjs",
   "description": "Description",
   "author": "Your Name",
   "version": "0.1.0",
@@ -12,10 +12,14 @@
     "build": "brunch build --production"
   },
   "dependencies": {
+    "envify": "^1.2.1",
     "iced-coffee-script-brunch": "^1.7.0",
     "jade": "^1.11.0",
     "jade-brunch": "^2.0.0",
-    "jade-react-brunch": "^1.0.1",
+    "jade-react-brunch": "git://github.com/timCF/jade-react-brunch",
+    "react": "^0.14.7",
+    "react-dom": "^0.14.7",
+    "sass-brunch": "^2.0.0",
     "static-jade-brunch": "^1.8.0"
   },
   "devDependencies": {

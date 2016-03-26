@@ -1,0 +1,3 @@
+if locals.stack
+	each el in locals.stack
+		div= el
