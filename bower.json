@@ -1,0 +1,21 @@
+{
+  "name": "nextgenjs",
+  "description": "Description",
+  "main": "",
+  "authors": [
+    "timCF"
+  ],
+  "license": "MIT",
+  "homepage": "https://github.com/timCF/nextgenjs",
+  "moduleType": [],
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "bootstrap": "^3.3.6"
+  }
+}

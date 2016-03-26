@@ -11,7 +11,13 @@
     "start": "brunch watch --server",
     "build": "brunch build --production"
   },
-  "dependencies": {},
+  "dependencies": {
+    "iced-coffee-script-brunch": "^1.7.0",
+    "jade": "^1.11.0",
+    "jade-brunch": "^2.0.0",
+    "jade-react-brunch": "^1.0.1",
+    "static-jade-brunch": "^1.8.0"
+  },
   "devDependencies": {
     "javascript-brunch": "^2.0.0",
     "css-brunch": "^2.0.0",
