@@ -14,4 +14,5 @@ module.exports = (state, utils) ->
 	state.data = {}
 	state.data.option = "ru"
 	state.data.enabled = false
+	state.data.files = []
 	setInterval((() -> if state.data.enabled then state.stack.push((new Date()).toLocaleString(state.data.option,opts))), 500)

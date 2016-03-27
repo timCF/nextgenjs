@@ -1,18 +1,23 @@
+- var utils = locals.utils
+- var state = locals.state
 mixin swapbutton(name, path, style)
-	if locals.state.data && locals.state.data.enabled
-		button.btn.btn-success(class=style onClick=locals.utils.view_swap(locals.state, path))= name
+	if state.data && state.data.enabled
+		button.btn.btn-success(class=style onClick=utils.view_swap(state, path))= name
 	else
-		button.btn.btn-default(class=style onClick=locals.utils.view_swap(locals.state, path))= name
+		button.btn.btn-default(class=style onClick=utils.view_swap(state, path))= name
 mixin selectitems(list, path, style)
-	select.form-control(class=style onChange=locals.utils.view_set(locals.state, path))
+	select.form-control(class=style onChange=utils.view_set(state, path))
 		each el in list
 			option= el
+mixin fileinput(path)
+	div.btn.btn-default.btn-lg.btn-file.fill Browse or drag and drop files
+		input(type="file" multiple="true" onChange=utils.view_files(state, path))
 nav.navbar.navbar-default.navbar-fixed-top.transparent.text-center
 	div.btn-group
-		button.btn.btn-default.navbar-btn(onClick=locals.utils.info("hello nextgenjs")) info
-		button.btn.btn-info.navbar-btn(onClick=locals.utils.notice("hello nextgenjs")) notice
-		button.btn.btn-warning.navbar-btn(onClick=locals.utils.warn("hello nextgenjs")) warn
-		button.btn.btn-danger.navbar-btn(onClick=locals.utils.error("hello nextgenjs")) error
+		button.btn.btn-default.navbar-btn(onClick=utils.info("hello nextgenjs")) info
+		button.btn.btn-info.navbar-btn(onClick=utils.notice("hello nextgenjs")) notice
+		button.btn.btn-warning.navbar-btn(onClick=utils.warn("hello nextgenjs")) warn
+		button.btn.btn-danger.navbar-btn(onClick=utils.error("hello nextgenjs")) error
 	button.btn.btn-default.navbar-btn(onClick=download("hello\r\nnextgenjs", Date()+".txt", "text/plain")) download
 	+swapbutton("enabled", ["data","enabled"], "navbar-btn")
 div.container-fluid
@@ -21,7 +26,10 @@ div.container-fluid
 			+selectitems(["ru","en-US"], ["data","option"], "btn-primary fill")
 		div.col-xs-6
 			+swapbutton("enabled", ["data","enabled"], "fill")
-	if locals.state.stack
+	div.row
+		div.col-xs-12
+			+fileinput(["data","files"])
+	if state.stack
 		div.row
-			each el in locals.state.stack
+			each el in state.stack
 				div.col-xs-3= el

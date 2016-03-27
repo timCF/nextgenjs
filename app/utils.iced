@@ -9,3 +9,7 @@ module.exports =
 			Imuta.update_in(state, path, (_) -> subj)
 	view_swap: (state, path) ->
 		Imuta.update_in(state, path, (bool) -> not(bool))
+	view_files: (state, path, ev) ->
+		if (ev? and ev.target? and ev.target.files? and (ev.target.files.length > 0))
+			Imuta.update_in(state, path, (_) -> [].map.call(ev.target.files, (el) -> el))
+			console.log(Imuta.access_in(state, path))
