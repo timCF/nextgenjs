@@ -21,6 +21,6 @@
     "jquery": "^2.2.2",
     "growl": "^1.3.1",
     "downloadjs": "^1.4.2",
-    "imuta": "*"
+    "imuta": "^1.0.0"
   }
 }
