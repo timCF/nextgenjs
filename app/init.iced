@@ -7,5 +7,8 @@ document.addEventListener "DOMContentLoaded", (e) ->
 	fullstate = Object.freeze({state: state, utils: utils})
 	react = require("react-dom")
 	widget = require("widget")
-	setInterval((() -> react.render(widget(fullstate), document.getElementById("main_frame"))), 500)
+	render = () ->
+		react.render(widget(fullstate), document.getElementById("main_frame"))
+		setTimeout(render, 500)
 	require("main")(state, utils)
+	render()
