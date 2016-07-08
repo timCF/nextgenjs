@@ -20,7 +20,6 @@
     "react": "^0.14.7",
     "jquery": "^2.2.2",
     "growl": "^1.3.1",
-    "downloadjs": "^1.4.2",
-    "imuta": "^1.0.0"
+    "downloadjs": "^1.4.2"
   }
 }
