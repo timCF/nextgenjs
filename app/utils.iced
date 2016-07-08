@@ -16,3 +16,5 @@ module.exports =
 		if (ev? and ev.target? and ev.target.files? and (ev.target.files.length > 0))
 			jf.update_in(state, path, (_) -> [].map.call(ev.target.files, (el) -> el))
 			console.log(jf.get_in(state, path))
+	auth: (state) ->
+		state.auth = true

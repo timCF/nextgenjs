@@ -20,3 +20,50 @@ body
 	background: white
 	cursor: inherit
 	display: block
+.center_abs
+	position: absolute
+	top: 40%
+	right: 0
+	bottom: 0
+	left: 0
+	margin: auto
+.widthlim
+	max-width: 500px
+	width: auto
+.myicon
+	font-size: 1.45em
+@font-face
+	font-family: 'FontAwesome'
+	src: url('fonts/fontawesome-webfont.eot')
+	src: url('fonts/fontawesome-webfont.eot') format('embedded-opentype'), url('fonts/fontawesome-webfont.woff2') format('woff2'), url('fonts/fontawesome-webfont.woff') format('woff'), url('fonts/fontawesome-webfont.ttf') format('truetype'), url('fonts/fontawesome-webfont.svg') format('svg')
+	font-weight: normal
+	font-style: normal
+=keyframes($name)
+	@-webkit-keyframes #{$name}
+		@content
+	@-moz-keyframes #{$name}
+		@content
+	@-ms-keyframes #{$name}
+		@content
+	@keyframes #{$name}
+		@content
++keyframes(blink)
+	from
+		box-shadow: 0 0 1px blue
+	to
+		box-shadow: 0 0 20px blue
+.glowing
+	-webkit-animation: blink 0.5s ease-in-out infinite alternate
+	-moz-animation: blink 0.5s ease-in-out infinite alternate
+	-o-animation: blink 0.5s ease-in-out infinite alternate
+	animation: blink 0.5s ease-in-out infinite alternate
+.mt
+	margin-top: 5px
+.ml
+	margin-left: 5px
+$colors: (#00A0B1,#2E8DEF,#A700AE,#643EBF,#BF1E4B,#DC572E,#00A600,#0A5BC4)
+@mixin colors_macro
+	@for $i from 1 through length($colors)
+		.color#{$i - 1}
+			background-color: nth($colors, $i)
+@include colors_macro

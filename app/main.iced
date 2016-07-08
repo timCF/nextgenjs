@@ -10,9 +10,6 @@ module.exports = (state, utils) ->
 		minute: 'numeric',
 		second: 'numeric'
 	}
-	state.stack = []
-	state.data = {}
-	state.data.option = "ru"
-	state.data.enabled = false
-	state.data.files = []
-	setInterval((() -> if state.data.enabled then state.stack.push((new Date()).toLocaleString(state.data.option,opts))), 500)
+	setInterval((() -> if state.data.enabled then state.stack.push(state.login+" "+(new Date()).toLocaleString(state.data.option,opts))), 500)
+	utils.render_coroutine() # here first render and starts coroutine
+	if not(state.auth) then $('[tabindex="' + 1  + '"]').focus()

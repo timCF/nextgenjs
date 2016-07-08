@@ -7,29 +7,50 @@ mixin swapbutton(name, path, style)
 		button.btn.btn-default(class=style onClick=utils.view_swap(state, path))= name
 mixin selectitems(list, path, style)
 	select.form-control(class=style onChange=utils.view_set(state, path))
+		option(value="" disabled selected)= "choose"
 		each el in list
-			option= el
+			option(value=el)= el
 mixin fileinput(path)
 	div.btn.btn-default.btn-lg.btn-file.fill Browse or drag and drop files
 		input(type="file" multiple="true" onChange=utils.view_files(state, path))
-nav.navbar.navbar-default.navbar-fixed-top.transparent.text-center
-	div.btn-group
-		button.btn.btn-default.navbar-btn(onClick=utils.info("hello nextgenjs")) info
-		button.btn.btn-info.navbar-btn(onClick=utils.notice("hello nextgenjs")) notice
-		button.btn.btn-warning.navbar-btn(onClick=utils.warn("hello nextgenjs")) warn
-		button.btn.btn-danger.navbar-btn(onClick=utils.error("hello nextgenjs")) error
-	button.btn.btn-default.navbar-btn(onClick=download("hello\r\nnextgenjs", Date()+".txt", "text/plain")) download
-	+swapbutton("enabled", ["data","enabled"], "navbar-btn")
-div.container-fluid
-	div.row
-		div.col-xs-6
-			+selectitems(["ru","en-US"], ["data","option"], "btn-primary fill")
-		div.col-xs-6
-			+swapbutton("enabled", ["data","enabled"], "fill")
-	div.row
-		div.col-xs-12
-			+fileinput(["data","files"])
-	if state.stack
+mixin navbar()
+	nav.navbar.navbar-default.navbar-fixed-top.transparent.text-center
+		div.btn-group
+			button.btn.btn-default.navbar-btn(onClick=utils.info("hello nextgenjs")) info
+			button.btn.btn-info.navbar-btn(onClick=utils.notice("hello nextgenjs")) notice
+			button.btn.btn-warning.navbar-btn(onClick=utils.warn("hello nextgenjs")) warn
+			button.btn.btn-danger.navbar-btn(onClick=utils.error("hello nextgenjs")) error
+			button.btn.btn-danger.navbar-btn.color2(type="button" data-toggle="tooltip" data-placement="bottom" title="swag")
+				span.fa.fa-usd.myicon
+		div.btn-group.ml
+			button.btn.btn-default.navbar-btn(onClick=download("hello\r\nnextgenjs", Date()+".txt", "text/plain")) download
+			+swapbutton("enabled", ["data","enabled"], "navbar-btn")
+mixin main()
+	div.container-fluid
 		div.row
-			each el in state.stack
-				div.col-xs-3= el
+			div.col-xs-6
+				+selectitems(["ru","en-US"], ["data","option"], "btn-primary fill")
+			div.col-xs-6
+				+swapbutton("enabled", ["data","enabled"], "fill")
+		div.row
+			div.col-xs-12
+				+fileinput(["data","files"])
+		if state.stack
+			div.row
+				each el in state.stack
+					div.col-xs-3= el
+mixin auth()
+	div.center_abs.widthlim
+		form
+			input.form-control.fill.megaform(tabIndex="1" type="text" id="login" placeholder="логин" autoComplete="on" onChange=utils.view_set(state, ["login"]))
+			input.form-control.fill.megaform(tabIndex="2" type="password" id="password" placeholder="пароль" autoComplete="off" onChange=utils.view_set(state, ["password"]))
+			button.btn.btn-primary.fill.submitmegaform(type="submit" data-toggle="tooltip" data-placement="bottom" title="войти" onClick=utils.auth(state))
+				span.myicon(class="fa fa-sign-in" aria-hidden="true")
+//
+//	CONTENT
+//
+if state.auth
+	+navbar()
+	+main()
+else
+	+auth()
