@@ -1,5 +1,6 @@
 - var utils = locals.utils
 - var state = locals.state
+- var optionlg = "form-control input-lg text-center noborder"
 mixin swapbutton(name, path, style)
 	if state.data && state.data.enabled
 		button.btn.btn-success(class=style onClick=utils.view_swap(state, path))= name
