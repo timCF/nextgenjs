@@ -18,3 +18,7 @@ module.exports =
 			console.log(jf.get_in(state, path))
 	auth: (state) ->
 		state.auth = true
+	jf: jf
+	multiple_select: (state, path, ev) ->
+		if (ev? and ev.target?)
+			jf.put_in(state, path, [].slice.call(ev.target.options).filter((el) -> el.selected).map((el) -> el.value))

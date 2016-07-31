@@ -5,36 +5,47 @@ mixin swapbutton(name, path, style)
 		button.btn.btn-success(class=style onClick=utils.view_swap(state, path))= name
 	else
 		button.btn.btn-default(class=style onClick=utils.view_swap(state, path))= name
-mixin selectitems(list, path, style)
-	select.form-control(class=style onChange=utils.view_set(state, path))
-		option(value="" disabled selected)= "choose"
+mixin selectitems(list, path, dict)
+	- var currentval = utils.jf.get_in(state, path)
+	- var this_val = list.filter(function(el){return (el == currentval);})[0]
+	- var placeholder = ((this_val == currentval) ? dict[this_val] : "ничего не выбрано")
+	select.selectpicker.form-control(onChange=utils.view_set(state, path) data-live-search="true" title=placeholder)
 		each el in list
-			option(value=el)= el
+			option(key=el value=el)= dict[el]
+mixin selectitems_multiple(list, path, dict)
+	- var currentval = utils.jf.get_in(state, path)
+	- var this_val = (currentval ? currentval : []).map(function(el){return el.toString();})
+	select.selectpicker.form-control(multiple onChange=utils.multiple_select(state, path) data-live-search="true" defaultValue=this_val)
+		each el in list
+			option(key=el value=el)= dict[el]
 mixin fileinput(path)
 	div.btn.btn-default.btn-lg.btn-file.fill Browse or drag and drop files
 		input(type="file" multiple="true" onChange=utils.view_files(state, path))
 mixin navbar()
-	nav.navbar.navbar-default.navbar-fixed-top.transparent.text-center
-		div.btn-group
-			button.btn.btn-default.navbar-btn(onClick=utils.info("hello nextgenjs")) info
-			button.btn.btn-info.navbar-btn(onClick=utils.notice("hello nextgenjs")) notice
-			button.btn.btn-warning.navbar-btn(onClick=utils.warn("hello nextgenjs")) warn
-			button.btn.btn-danger.navbar-btn(onClick=utils.error("hello nextgenjs")) error
-			button.btn.btn-danger.navbar-btn.color2(type="button" data-toggle="tooltip" data-placement="bottom" title="swag")
-				span.fa.fa-usd.myicon
-		div.btn-group.ml
-			button.btn.btn-default.navbar-btn(onClick=download("hello\r\nnextgenjs", Date()+".txt", "text/plain")) download
-			+swapbutton("enabled", ["data","enabled"], "navbar-btn")
+	div.container-fluid
+		div.row.text-center
+			div.btn-group.ml.mt
+				button.btn.btn-default.btn-lg(onClick=utils.info("hello nextgenjs")) info
+				button.btn.btn-info.btn-lg(onClick=utils.notice("hello nextgenjs")) notice
+				button.btn.btn-warning.btn-lg(onClick=utils.warn("hello nextgenjs")) warn
+				button.btn.btn-danger.btn-lg(onClick=utils.error("hello nextgenjs")) error
+				button.btn.btn-danger.btn-lg.color2(type="button" data-toggle="tooltip" data-placement="bottom" title="swag")
+					span.fa.fa-usd.myicon
+			div.btn-group.ml.mt
+				button.btn.btn-default.btn-lg(onClick=download("hello\r\nnextgenjs", Date()+".txt", "text/plain")) download
+				+swapbutton("enabled", ["data","enabled"], "btn-lg")
 mixin main()
 	div.container-fluid
-		div.row
+		div.row.mt
 			div.col-xs-6
-				+selectitems(["ru","en-US"], ["data","option"], "btn-primary fill")
+				+selectitems(["ru","en-US"], ["data","option"], {"ru": "русский", "en-US": "английский"})
 			div.col-xs-6
-				+swapbutton("enabled", ["data","enabled"], "fill")
-		div.row
+				+selectitems_multiple([1,2,3], ["opts"], {"1":"foo","2":"bar","3":"baz"})
+		div.row.mt
 			div.col-xs-12
 				+fileinput(["data","files"])
+		div.row.mt.text-center
+			span= state.opts.join(", ")
 		if state.stack
 			div.row
 				each el in state.stack

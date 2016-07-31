@@ -23,6 +23,7 @@
     "downloadjs": "timCF/download#cd47f8ae7ceee80d49b953681bbb2c4542d7efdd",
     "font-awesome": "^4.6.3",
     "bulletjs": "*",
-    "moment": "^2.14.1"
+    "moment": "^2.14.1",
+    "bootstrap-select": "^1.10.0"
   }
 }

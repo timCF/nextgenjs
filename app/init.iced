@@ -1,4 +1,5 @@
 document.addEventListener "DOMContentLoaded", (e) ->
+	jf = require('jsfunky')
 	prettyform = (e) ->
 		keyCode = e.keyCode || e.which
 		if ( keyCode ==  13 )
@@ -21,13 +22,17 @@ document.addEventListener "DOMContentLoaded", (e) ->
 	render_jqcb = () ->
 		# NOTICE !!! not reload page on submit forms
 		$('form').submit((e) -> e.preventDefault())
-	render = () ->
-		react.render(widget(fullstate), document.getElementById("main_frame"))
+	render = (cb) ->
 		render_tooltips()
 		render_jqcb()
+		$('.selectpicker').selectpicker({noneSelectedText: "ничего не выбрано"})
+		await react.render(widget(fullstate), document.getElementById("main_frame"), defer dummy)
+		if jf.is_function(cb,1) then cb(state)
+		dummy
 	render_coroutine = () ->
-		render()
+		await render(defer dummy)
 		setTimeout(render_coroutine, 500)
+		dummy
 	#
 	# state for main function, mutable
 	#
@@ -38,6 +43,7 @@ document.addEventListener "DOMContentLoaded", (e) ->
 			enabled: false,
 			files: []
 		},
+		opts: [],
 		auth: false,
 		login: '',
 		password: ''
