@@ -6,3 +6,7 @@ module.exports =
 			joinTo: 'app.css'
 		templates:
 			joinTo: 'app.js'
+	server:
+		port: 3333
+		stripSlashes: true
+		hostname: "0.0.0.0"
