@@ -51,6 +51,6 @@ document.addEventListener "DOMContentLoaded", (e) ->
 	#
 	# state for main function, mutable
 	#
-	utils = Object.freeze(Object.assign(require("utils"), {render: render, render_coroutine: render_coroutine}))
+	utils = Object.freeze( jf.merge(require("utils"), {render: render, render_coroutine: render_coroutine}) )
 	fullstate = Object.freeze({state: state, utils: utils})
 	require("main")(state, utils)

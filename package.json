@@ -20,7 +20,7 @@
     "jade": "^1.11.0",
     "jade-brunch": "^2.0.0",
     "jade-react-brunch": "git://github.com/timCF/jade-react-brunch",
-    "jsfunky": "^1.0.0",
+    "jsfunky": "timCF/jsfunky#8d73af422c4e3c30f78a8e1689d2f09b7d5ccbb0",
     "less-brunch": "^2.0.0",
     "protobufjs": "^5.0.1",
     "react": "^0.14.7",
