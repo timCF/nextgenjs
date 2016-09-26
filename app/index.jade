@@ -6,6 +6,8 @@ html(lang="ru")
 		title NextgenJS
 		link(rel="shortcut icon" href="favicon.ico" type="image/x-icon")
 		link(href="app.css" rel="stylesheet")
+		script(type="text/javascript").
+			window.nodeRequire = require;delete window.require;delete window.exports;delete window.module;
 		script(type="text/javascript" src="app.js")
 		script(type="text/javascript").
 			require("main")

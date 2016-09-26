@@ -1,5 +1,6 @@
 {
   "name": "nextgenjs",
+  "main": "electron/main.js",
   "description": "Description",
   "author": "Your Name",
   "version": "0.1.0",
@@ -33,6 +34,7 @@
     "css-brunch": "^2.0.0",
     "uglify-js-brunch": "^2.0.0",
     "clean-css-brunch": "^2.0.0",
-    "auto-reload-brunch": "^2.0.0"
+    "auto-reload-brunch": "^2.0.0",
+    "electron": "^1.4.1"
   }
 }
