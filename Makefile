@@ -7,7 +7,10 @@ rebuild:
 	brunch b --production
 	brunch b --production
 desktop:
+	rm -rf ./public/desktop_tmp
 	rm -rf ./public/desktop
+	mkdir ./public/desktop_tmp
 	mkdir ./public/desktop
-	cd ./public/desktop
-	electron-packager ../../ nextgenjs --platform=all --arch=all --ignore="node_modules|bower_components|\.git"
+	pushd ./public/desktop_tmp && electron-packager ../../ nextgenjs --platform=all --arch=all --ignore="node_modules|bower_components|\.git" && for i in *; do zip -r $$i $$i; done && popd
+	cp ./public/desktop_tmp/*.zip ./public/desktop
+	rm -rf ./public/desktop_tmp
