@@ -1,12 +1,12 @@
 {
-  "name": "nextlive",
+  "name": "nextgenjs",
   "description": "Description",
   "main": "",
   "authors": [
     "timCF"
   ],
   "license": "MIT",
-  "homepage": "https://github.com/timCF/nextlive",
+  "homepage": "https://github.com/timCF/nextgenjs",
   "moduleType": [],
   "ignore": [
     "**/.*",
