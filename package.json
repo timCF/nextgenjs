@@ -1,5 +1,5 @@
 {
-  "name": "nextgenjs",
+  "name": "nextlive",
   "main": "electron/main.js",
   "description": "Description",
   "author": "Your Name",
@@ -23,6 +23,7 @@
     "jade-react-brunch": "git://github.com/timCF/jade-react-brunch",
     "jsfunky": "timCF/jsfunky#8d73af422c4e3c30f78a8e1689d2f09b7d5ccbb0",
     "less-brunch": "^2.0.0",
+    "livescript-brunch": "^2.0.0",
     "protobufjs": "^5.0.1",
     "react": "^0.14.7",
     "react-dom": "^0.14.7",
