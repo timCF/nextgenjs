@@ -1,6 +1,15 @@
-<!DOCTYPE html5><html lang="ru"><head><meta charset="utf-8"/><meta http-equiv="Content-Type" content="text/html; charset=utf8"/><title>NextgenJS</title><link rel="shortcut icon" href="favicon.ico" type="image/x-icon"/><link href="app.css" rel="stylesheet"/><script type="text/javascript">if(typeof(require) != 'undefined'){
-	window.nodeRequire = require;
-	delete window.require;
-	delete window.exports;
-	delete window.module;
+<!DOCTYPE html5><html lang="ru"><head><meta charset="utf-8"/><meta http-equiv="Content-Type" content="text/html; charset=utf8"/><title>NextgenJS</title><link rel="shortcut icon" href="favicon.ico" type="image/x-icon"/><link href="app.css" rel="stylesheet"/><script type="text/javascript" src="https://cdn.onesignal.com/sdks/OneSignalSDK.js"></script><script type="text/javascript">var OneSignal = window.OneSignal || [];
+console.log(OneSignal);
+console.log(OneSignal.push(["init", {
+  appId: "a6a280a2-3b7c-4197-8891-4af2f90c5c26",
+  autoRegister: true, /* Set to true to automatically prompt visitors */
+  subdomainName: 'timcf',
+  notifyButton: {
+     enable: true /* Set to false to hide */
+  }
+}]));</script><script type="text/javascript">if(typeof(require) != 'undefined'){
+  window.nodeRequire = require;
+  delete window.require;
+  delete window.exports;
+  delete window.module;
 }</script><script type="text/javascript" src="app.js"></script><script type="text/javascript">require("main")</script><script type="text/javascript">require("init")</script></head><body><div id="main_frame"></div></body></html>
